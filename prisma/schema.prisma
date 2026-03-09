@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+// SQLite for development, PostgreSQL for production.
+// Connection URL is configured in prisma.config.ts
+datasource db {
+  provider = "sqlite"
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
